@@ -25,7 +25,7 @@ fn main() {
         Some(tc) => tc,
         None => return
     };
-    let tzdata = match tzparse::worldtime(timechanges) {
+    let tzdata = match tzparse::worldtime(&timechanges) {
         Some(tz) => tz,
         None => return
     };
@@ -33,5 +33,9 @@ fn main() {
     //No verbose, no year provided
     if opt.verbose == false && opt.year == None {
         println!("{} {} {}", &opt.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation);
-    }
+    } else {
+            for i in &timechanges {
+                println!("{}", i.time.to_rfc2822());
+            }
+        }
 }
