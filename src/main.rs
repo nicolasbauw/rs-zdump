@@ -17,10 +17,21 @@ struct Opt {
 }
 
 fn main() {
+    // Getting cmdline args
     let opt = Opt::from_args();
-    //println!("Verbose={}, timezone={}, year={:?}", opt.verbose, opt.timezone, opt.year);
-    match tzparse::get(opt.timezone, opt.year) {
-        Some(tz) => println!("{:?}", tzparse::worldtime(tz).unwrap()),
-        None => println!("Timezone not found")
-    };*/
+
+    // Parsing timezone's TZfile
+    let timechanges = match tzparse::get(&opt.timezone, opt.year) {
+        Some(tc) => tc,
+        None => return
+    };
+    let tzdata = match tzparse::worldtime(timechanges) {
+        Some(tz) => tz,
+        None => return
+    };
+
+    //No verbose, no year provided
+    if opt.verbose == false && opt.year == None {
+        println!("{} {} {}", &opt.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation);
+    }
 }

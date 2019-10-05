@@ -98,14 +98,6 @@ version = "0.1.56"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
-name = "rs-zdump"
-version = "0.1.0"
-dependencies = [
- "structopt 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
- "tzparse 0.1.0 (git+https://github.com/nicolasbauw/rs-tzparse.git)",
-]
-
-[[package]]
 name = "structopt"
 version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -157,7 +149,7 @@ dependencies = [
 [[package]]
 name = "tzfile"
 version = "0.1.0"
-source = "git+https://github.com/nicolasbauw/rs-tzfile.git#f972636153c7b587b8005321411664bcaf3008f1"
+source = "git+https://github.com/nicolasbauw/rs-tzfile.git?tag=v0.1.0#f972636153c7b587b8005321411664bcaf3008f1"
 dependencies = [
  "byteorder 1.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "chrono 0.4.9 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -165,11 +157,10 @@ dependencies = [
 
 [[package]]
 name = "tzparse"
-version = "0.1.0"
-source = "git+https://github.com/nicolasbauw/rs-tzparse.git#38bc63c921ba9c41203020c5d5ddc4f050257317"
+version = "0.1.1"
 dependencies = [
  "chrono 0.4.9 (registry+https://github.com/rust-lang/crates.io-index)",
- "tzfile 0.1.0 (git+https://github.com/nicolasbauw/rs-tzfile.git)",
+ "tzfile 0.1.0 (git+https://github.com/nicolasbauw/rs-tzfile.git?tag=v0.1.0)",
 ]
 
 [[package]]
@@ -206,6 +197,14 @@ name = "winapi-x86_64-pc-windows-gnu"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
+[[package]]
+name = "zdump"
+version = "0.1.0"
+dependencies = [
+ "structopt 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "tzparse 0.1.1",
+]
+
 [metadata]
 "checksum autocfg 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)" = "b671c8fb71b457dd4ae18c4ba1e59aa81793daacc361d82fcd410cef0d491875"
 "checksum bitflags 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "8a606a02debe2813760609f57a64a2ffd27d9fdf5b2f133eaca0b248dd92cdd2"
@@ -225,8 +224,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum syn 1.0.5 (registry+https://github.com/rust-lang/crates.io-index)" = "66850e97125af79138385e9b88339cbcd037e3f28ceab8c5ad98e64f0f1f80bf"
 "checksum textwrap 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d326610f408c7a4eb6f51c37c330e496b08506c9457c9d34287ecc38809fb060"
 "checksum time 0.1.42 (registry+https://github.com/rust-lang/crates.io-index)" = "db8dcfca086c1143c9270ac42a2bbd8a7ee477b78ac8e45b19abfb0cbede4b6f"
-"checksum tzfile 0.1.0 (git+https://github.com/nicolasbauw/rs-tzfile.git)" = "<none>"
-"checksum tzparse 0.1.0 (git+https://github.com/nicolasbauw/rs-tzparse.git)" = "<none>"
+"checksum tzfile 0.1.0 (git+https://github.com/nicolasbauw/rs-tzfile.git?tag=v0.1.0)" = "<none>"
 "checksum unicode-segmentation 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = "1967f4cdfc355b37fd76d2a954fb2ed3871034eb4f26d60537d88795cfc332a9"
 "checksum unicode-width 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)" = "7007dbd421b92cc6e28410fe7362e2e0a2503394908f417b68ec8d1c364c4e20"
 "checksum unicode-xid 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "826e7639553986605ec5979c7dd957c7895e93eabed50ab2ffa7f6128a75097c"
