@@ -1,4 +1,3 @@
-
 extern crate tzparse;
 use structopt::StructOpt;
 
@@ -12,7 +11,8 @@ struct Opt {
     // Timezone
     timezone: String,
 
-    #[structopt(short = "c")]
+    // Year selection
+    #[structopt(short = "y")]
     year: Option<i32>,
 }
 
@@ -34,8 +34,9 @@ fn main() {
     if opt.verbose == false && opt.year == None {
         println!("{} {} {}", &opt.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation);
     } else {
+            println!("Timechanges for {} in {} (UTC):", &opt.timezone, opt.year.unwrap());
             for i in &timechanges {
-                println!("{}", i.time.to_rfc2822());
+                println!("{}", i.time.format("%a %e %b %T %Y").to_string());
             }
         }
 }
