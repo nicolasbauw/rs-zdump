@@ -4,10 +4,6 @@ use structopt::StructOpt;
 #[derive(Debug, StructOpt)]
 #[structopt(about = "My Rust version of zdump")]
 struct Opt {
-    // List transitions verbosely
-    #[structopt(short = "v")]
-    verbose: bool,
-
     // Timezone
     timezone: String,
 
@@ -30,13 +26,14 @@ fn main() {
         None => return
     };
 
-    //No verbose, no year provided
-    if opt.verbose == false && opt.year == None {
-        println!("{} {} {}", &opt.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation);
-    } else {
-            println!("Timechanges for {} in {} (UTC):", &opt.timezone, opt.year.unwrap());
+    match opt.year {
+        None => println!("{} {} {}", &opt.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation),
+        Some(y) => {
+            println!("Timechanges for {} in {} (UTC):", &opt.timezone, y);
             for i in &timechanges {
                 println!("{}", i.time.format("%a %e %b %T %Y").to_string());
             }
         }
+    }
 }
+
