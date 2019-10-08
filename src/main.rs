@@ -27,7 +27,7 @@ fn main() {
     };
 
     match opt.year {
-        None => println!("{} {} {}", &opt.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation),
+        None => println!("{} {} {}, week number: {}", &opt.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation, tzdata.datetime.format("%W").to_string()),
         Some(y) => {
             println!("Timechanges for {} in {} (UTC):", &opt.timezone, y);
             for i in &timechanges {
