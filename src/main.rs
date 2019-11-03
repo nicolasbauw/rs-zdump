@@ -5,6 +5,7 @@ use structopt::StructOpt;
 #[structopt(about = "My Rust version of zdump")]
 struct Opt {
     // Timezone
+    #[structopt(default_value = "Europe/Paris")]
     timezone: String,
 
     // Year selection
