@@ -9,4 +9,3 @@ edition = "2018"
 [dependencies]
 tzparse = { git = "https://github.com/nicolasbauw/rs-tzparse.git", tag="v0.2.0" }
 structopt = { version = "0.3.2", default-features = false }
-chrono = "0.4"
