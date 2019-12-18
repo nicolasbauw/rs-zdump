@@ -18,11 +18,11 @@ fn main() {
     let opt = Opt::from_args();
 
     // Parsing timezone's TZfile
-    let timechanges = match tzparse::get(&opt.timezone, opt.year) {
+    let timechanges = match tzparse::get_timechanges(&opt.timezone, opt.year) {
         Some(tc) => tc,
         None => return
     };
-    let tzdata = match tzparse::worldtime(&timechanges) {
+    let tzdata = match tzparse::get_zoneinfo(&timechanges) {
         Some(tz) => tz,
         None => return
     };
@@ -30,9 +30,8 @@ fn main() {
     match opt.year {
         None => println!("{} {} {}, week number: {}", &opt.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation, tzdata.datetime.format("%W").to_string()),
         Some(y) => {
-            println!("Timechanges for {} in {} (UTC):", &opt.timezone, y);
             for i in &timechanges {
-                println!("{}", i.time.format("%a %e %b %T %Y").to_string());
+                println!("{} {} UT -> {} gmtoff={} DST: {}", &opt.timezone, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
             }
         }
     }
