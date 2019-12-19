@@ -3,6 +3,9 @@ name = "zdump"
 version = "0.1.0"
 authors = ["Nicolas BAUW <nbauw@hotmail.com>"]
 edition = "2018"
+categories = ["command-line-utilities"]
+keywords = ["timezone", "timechanges", "zdump", "time", "date"]
+description = "An alternative version of the zdump utility"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
