@@ -31,9 +31,9 @@ fn main() {
         None => println!("{} {} {}, week number: {}", &opt.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation, tzdata.datetime.format("%W").to_string()),
         Some(y) => {
             for i in &timechanges {
-                // Current year
+                // Timechange's year
                 let cy: i32=  i.time.format("%Y").to_string().parse().unwrap();
-                // Timechange does not match current year ? that's the last known timechange from the past, we do not display it
+                // Timechange's year does not match selected year ? we do not display it
                 if cy == y {
                     println!("{} {} UT -> {} gmtoff={} DST: {}", &opt.timezone, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
                 }
