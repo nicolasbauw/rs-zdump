@@ -1,5 +1,8 @@
 # zdump
 
+[![Current Crates.io Version](https://img.shields.io/crates/v/zdump.svg)](https://crates.io/crates/zdump)
+[![Downloads badge](https://img.shields.io/crates/d/zdump.svg)](https://crates.io/crates/zdump)
+
 An alternative version of the zdump utility.
 
 Without arguments, shows actual time and data about the Europe/Paris zone:
@@ -20,3 +23,9 @@ zdump Europe/Paris -y 2020
 Europe/Paris Sun 29 Mar 01:00:00 2020 UT -> CEST gmtoff=7200 DST: true
 Europe/Paris Sun 25 Oct 01:00:00 2020 UT -> CET gmtoff=3600 DST: false
 ```
+
+It uses system TZfiles (default location on Linux and Macos /usr/share/zoneinfo). On Windows, default expected location is HOME/.zoneinfo. You can override the TZfiles default location with the TZFILES_DIR environment variable. Example for Windows:
+
+$env:TZFILES_DIR="C:\Users\nbauw\Dev\rs-tzfile\zoneinfo\"; zdump
+
+License: GPL-3.0
