@@ -8,6 +8,7 @@ categories = ["command-line-utilities"]
 keywords = ["timezone", "timechanges", "zdump", "time", "date"]
 description = "An alternative version of the zdump utility"
 license = "GPL-3.0"
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
