@@ -57,10 +57,19 @@ fn main() {
             };
 
     // Parsing timezone's TZfile
-    let timechanges = match tzparse::get_timechanges(&opt.zonename, Some(year)) {
+    let timechanges = match tzparse::get_timechanges(&opt.zonename, if !opt.all { Some(year) } else { None }) {
         Some(tc) => tc,
         None => return
     };
+
+    if opt.all {
+        for i in &timechanges {
+                println!("{} {} UT -> {} gmtoff={} DST: {}", &opt.zonename, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
+        }
+        return
+    }
+    
+
     let tzdata = match tzparse::get_zoneinfo(&timechanges) {
         Some(tz) => tz,
         None => return
