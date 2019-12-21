@@ -37,6 +37,10 @@ struct Opt {
     #[structopt(short = "y")]
     /// View year's timechanges
     year: Option<i32>,
+
+    #[structopt(short = "a")]
+    /// View all zone's timechanges
+    all: bool
 }
 
 fn main() {
