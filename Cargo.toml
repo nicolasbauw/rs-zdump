@@ -13,5 +13,6 @@ readme = "README.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-tzparse = "0.3.5"
+tzparse = { path = "../rs-tzparse" }
 structopt = { version = "0.3.2", default-features = false }
+chrono = "0.4"
