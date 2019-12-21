@@ -25,6 +25,7 @@
 
 extern crate tzparse;
 use structopt::StructOpt;
+use chrono::prelude::*;
 
 #[derive(Debug, StructOpt)]
 #[structopt(about = "My Rust version of zdump")]
@@ -42,8 +43,17 @@ fn main() {
     // Getting cmdline args
     let opt = Opt::from_args();
 
+    // Provided year (or current year by default)
+    let year: i32 = match opt.year {
+        Some(y) => y,
+        None => {
+            let d = Utc::now();
+            d.format("%Y").to_string().parse().unwrap()
+                }
+            };
+
     // Parsing timezone's TZfile
-    let timechanges = match tzparse::get_timechanges(&opt.zonename, opt.year) {
+    let timechanges = match tzparse::get_timechanges(&opt.zonename, Some(year)) {
         Some(tc) => tc,
         None => return
     };
