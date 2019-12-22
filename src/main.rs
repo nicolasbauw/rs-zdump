@@ -19,7 +19,7 @@
 //! Europe/Paris Sun 25 Oct 01:00:00 2020 UT -> CET gmtoff=3600 DST: false 
 //! ```
 //! 
-//! To display zone's timechanges history: 
+//! To display all zone's timechanges: 
 //! ```text
 //! zdump America/Phoenix -a     
 //! America/Phoenix Sun 18 Nov 19:00:00 1883 UT -> MST gmtoff=-25200 DST: false
@@ -55,7 +55,7 @@ struct Opt {
     year: Option<i32>,
 
     #[structopt(short = "a")]
-    /// View zone's timechanges history
+    /// View all zone's timechanges
     all: bool
 }
 
