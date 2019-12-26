@@ -72,7 +72,7 @@ fn main() {
                 }
             };
 
-    // Parsing timezone's TZfile
+    // Parsing timechanges
     let timechanges = match tzparse::get_timechanges(&opt.zonename, if !opt.all { Some(year) } else { None }) {
         Some(tc) => tc,
         None => return
@@ -85,8 +85,7 @@ fn main() {
         return
     }
     
-
-    let tzdata = match tzparse::get_zoneinfo(&timechanges) {
+    let tzdata = match tzparse::get_zoneinfo(&opt.zonename) {
         Some(tz) => tz,
         None => return
     };
