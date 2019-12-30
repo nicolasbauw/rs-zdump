@@ -63,12 +63,16 @@ fn main() {
     // Getting cmdline args
     let opt = Opt::from_args();
 
+    let tzdata = match tzparse::get_zoneinfo(&opt.zonename) {
+        Some(tz) => tz,
+        None => return
+    };
+
     // Provided year (or current year by default)
     let year: i32 = match opt.year {
         Some(y) => y,
         None => {
-            let d = Utc::now();
-            d.format("%Y").to_string().parse().unwrap()
+            tzdata.datetime.format("%Y").to_string().parse().unwrap()
                 }
             };
 
@@ -84,11 +88,6 @@ fn main() {
         }
         return
     }
-    
-    let tzdata = match tzparse::get_zoneinfo(&opt.zonename) {
-        Some(tz) => tz,
-        None => return
-    };
 
     match opt.year {
         None => println!("{} {} {}, week number: {}", &opt.zonename, tzdata.datetime.to_rfc2822(), tzdata.abbreviation, tzdata.datetime.format("%V").to_string()),
