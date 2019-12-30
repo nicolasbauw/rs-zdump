@@ -41,7 +41,6 @@
 
 extern crate tzparse;
 use structopt::StructOpt;
-use chrono::prelude::*;
 
 #[derive(Debug, StructOpt)]
 #[structopt(about = "My Rust version of zdump")]
