@@ -1,6 +1,6 @@
 //! An alternative version of the zdump utility.
 //!
-//! Without arguments, shows actual time and data about the Europe/Paris zone:
+//! Without arguments, shows current time and data about the Europe/Paris zone:
 //! ```text
 //! zdump
 //! Europe/Paris Thu, 19 Dec 2019 13:48:47 +0100 CET, week number: 51
