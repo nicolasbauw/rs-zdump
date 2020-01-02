@@ -1,6 +1,6 @@
 [package]
 name = "zdump"
-version = "0.2.3"
+version = "0.2.4"
 authors = ["Nicolas BAUW <nbauw@hotmail.com>"]
 edition = "2018"
 repository = "https://github.com/nicolasbauw/rs-zdump"
@@ -13,5 +13,5 @@ readme = "README.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-tzparse = "0.5.0"
+tzparse = "0.5.1"
 structopt = { version = "0.3.2", default-features = false }
