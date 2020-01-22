@@ -39,11 +39,10 @@
 //!
 //! $env:TZFILES_DIR="C:\Users\nbauw\Dev\rs-tzfile\zoneinfo\"; zdump
 
-extern crate tzparse;
 use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
-#[structopt(about = "My Rust version of zdump")]
+#[structopt(about = "An alternative version of zdump")]
 struct Opt {
     #[structopt(default_value = "Europe/Paris")]
     /// The timezone to query
@@ -58,14 +57,11 @@ struct Opt {
     all: bool
 }
 
-fn main() {
+fn main() -> Result<(), libtzfile::TzError> {
     // Getting cmdline args
     let opt = Opt::from_args();
 
-    let tzdata = match tzparse::get_zoneinfo(&opt.zonename) {
-        Some(tz) => tz,
-        None => return
-    };
+    let tzdata = tzparse::get_zoneinfo(&opt.zonename)?;
 
     // Provided year (or current year by default)
     let year: i32 = match opt.year {
@@ -76,16 +72,13 @@ fn main() {
             };
 
     // Parsing timechanges
-    let timechanges = match tzparse::get_timechanges(&opt.zonename, if !opt.all { Some(year) } else { None }) {
-        Some(tc) => tc,
-        None => return
-    };
+    let timechanges = tzparse::get_timechanges(&opt.zonename, if !opt.all { Some(year) } else { None })?;
 
     if opt.all {
         for i in &timechanges {
                 println!("{} {} UT -> {} gmtoff={} DST: {}", &opt.zonename, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
         }
-        return
+        return Ok(())
     }
 
     match opt.year {
@@ -101,5 +94,6 @@ fn main() {
             }
         }
     }
+    Ok(())
 }
 
