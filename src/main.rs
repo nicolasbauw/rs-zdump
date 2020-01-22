@@ -67,7 +67,7 @@ fn main() -> Result<(), libtzfile::TzError> {
     let year: i32 = match opt.year {
         Some(y) => y,
         None => {
-            tzdata.datetime.format("%Y").to_string().parse().unwrap()
+            tzdata.datetime.format("%Y").to_string().parse()?
                 }
             };
 
@@ -86,7 +86,7 @@ fn main() -> Result<(), libtzfile::TzError> {
         Some(y) => {
             for i in &timechanges {
                 // Timechange's year
-                let cy: i32=  i.time.format("%Y").to_string().parse().unwrap();
+                let cy: i32=  i.time.format("%Y").to_string().parse()?;
                 // Timechange's year does not match selected year ? we do not display it
                 if cy == y {
                     println!("{} {} UT -> {} gmtoff={} DST: {}", &opt.zonename, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
