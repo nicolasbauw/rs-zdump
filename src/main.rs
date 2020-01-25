@@ -40,6 +40,7 @@
 //! $env:TZFILES_DIR="C:\Users\nbauw\Dev\rs-tzfile\zoneinfo\"; zdump
 
 use structopt::StructOpt;
+use tzparse::TzError;
 
 #[derive(Debug, StructOpt)]
 #[structopt(about = "An alternative version of zdump")]
@@ -57,7 +58,7 @@ struct Opt {
     all: bool
 }
 
-fn main() -> Result<(), libtzfile::TzError> {
+fn main() -> Result<(), TzError> {
     // Getting cmdline args
     let opt = Opt::from_args();
 

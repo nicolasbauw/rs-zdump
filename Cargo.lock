@@ -367,7 +367,7 @@ dependencies = [
 
 [[package]]
 name = "tzparse"
-version = "1.0.2"
+version = "1.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "chrono 0.4.9 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -410,11 +410,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "zdump"
-version = "1.0.1"
+version = "1.0.2"
 dependencies = [
- "libtzfile 1.0.6 (registry+https://github.com/rust-lang/crates.io-index)",
  "structopt 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
- "tzparse 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "tzparse 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [metadata]
@@ -463,7 +462,7 @@ dependencies = [
 "checksum synstructure 0.12.1 (registry+https://github.com/rust-lang/crates.io-index)" = "3f085a5855930c0441ca1288cf044ea4aecf4f43a91668abdb870b4ba546a203"
 "checksum textwrap 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d326610f408c7a4eb6f51c37c330e496b08506c9457c9d34287ecc38809fb060"
 "checksum time 0.1.42 (registry+https://github.com/rust-lang/crates.io-index)" = "db8dcfca086c1143c9270ac42a2bbd8a7ee477b78ac8e45b19abfb0cbede4b6f"
-"checksum tzparse 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "59b59b1b4653e79f32c4b9c7f70391ee8318584b3c822f269855b3b4c8c8c044"
+"checksum tzparse 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)" = "11b8cc4dc675bb1ae794c54d3ba4e14eeefc89fb8ff11a5749ad691cab1c36b9"
 "checksum unicode-segmentation 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = "1967f4cdfc355b37fd76d2a954fb2ed3871034eb4f26d60537d88795cfc332a9"
 "checksum unicode-width 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)" = "7007dbd421b92cc6e28410fe7362e2e0a2503394908f417b68ec8d1c364c4e20"
 "checksum unicode-xid 0.2.0 (registry+https://github.com/rust-lang/crates.io-index)" = "826e7639553986605ec5979c7dd957c7895e93eabed50ab2ffa7f6128a75097c"
