@@ -15,27 +15,27 @@ OPTIONS:
 ARGS:
     <zonename>    The timezone to query [default: Europe/Paris]";
 
-struct Opt {
+pub struct Args {
     // The timezone to query
-    zonename: String,
+    pub zonename: Option<String>,
     // View all zone's timechanges
-    a: bool,
+    pub a: bool,
     // Specify a year
-    y: bool,
+    pub y: bool,
     // Help
-    h: bool,
+    pub h: bool,
     // View year's timechanges
-    year: Option<i32> 
+    pub year: Option<i32> 
 }
 
-fn get_cargs() {
+pub fn get_cargs() -> Args {
     let mut a: Vec<String> = env::args().collect();
     let b = a.clone();
     let mut parsed_args: Vec<usize> = Vec::new();
     let mut comparator: Vec<usize> = Vec::new();
     
     // Zonename, -a, -y, -h, year
-    let mut args: (Option<&str>, bool, bool, bool, Option<u32>) = (None, false, false, false, None);
+    let mut args: (&str, bool, bool, bool, Option<i32>) = ("", false, false, false, None);
 
     for i in 1..a.len() {
         match a[i].as_ref() {
@@ -45,7 +45,7 @@ fn get_cargs() {
             }
             "-y" => {
                 args.2 = true;
-                match a[i + 1].parse::<u32>() {
+                match a[i + 1].parse::<i32>() {
                     Ok(y) => {
                         args.4 = Some(y);
                     }
@@ -79,7 +79,7 @@ fn get_cargs() {
     }
     for i in 0..parsed_args.len() {
         if parsed_args[i] != comparator[i] && a[comparator[i]].parse::<u32>().is_err() == true {
-            args.0 = Some(&b[comparator[i]]);
+            args.0 = &b[comparator[i]];
             break;
         }
     }
@@ -90,5 +90,12 @@ fn get_cargs() {
         println!("Parsed args : {:?}", parsed_args);
         println!("Comparator : {:?}", comparator);
         println!("Zone : {:?}, -a : {}, -y : {}, -h : {}, year : {:?}", args.0, args.1, args.2, args.3, args.4);
+    }
+    Args {
+        zonename: if args.0 == "" { None } else { Some((args.0).to_string()) },
+        a: args.1,
+        y: args.2,
+        h: args.3,
+        year: args.4
     }
 }

@@ -39,30 +39,15 @@
 //!
 //! $env:TZFILES_DIR="C:\Users\nbauw\Dev\rs-tzfile\zoneinfo\"; zdump
 
-use structopt::StructOpt;
+mod env;
+use env::get_cargs;
 use tzparse::TzError;
-
-#[derive(Debug, StructOpt)]
-#[structopt(about = "An alternative version of zdump")]
-struct Opt {
-    #[structopt(default_value = "Europe/Paris")]
-    /// The timezone to query
-    zonename: String,
-
-    #[structopt(short = "y")]
-    /// View year's timechanges
-    year: Option<i32>,
-
-    #[structopt(short = "a")]
-    /// View all zone's timechanges
-    all: bool
-}
 
 fn main() -> Result<(), TzError> {
     // Getting cmdline args
-    let opt = Opt::from_args();
+    let opt = get_cargs();
 
-    let tzdata = tzparse::get_zoneinfo(&opt.zonename)?;
+    let tzdata = tzparse::get_zoneinfo(&opt.zonename.unwrap())?;
 
     // Provided year (or current year by default)
     let year: i32 = match opt.year {
@@ -73,24 +58,24 @@ fn main() -> Result<(), TzError> {
             };
 
     // Parsing timechanges
-    let timechanges = tzparse::get_timechanges(&opt.zonename, if !opt.all { Some(year) } else { None })?;
+    let timechanges = tzparse::get_timechanges(&opt.zonename.unwrap(), if !opt.a { Some(year) } else { None })?;
 
-    if opt.all {
+    if opt.a {
         for i in &timechanges {
-                println!("{} {} UT -> {} gmtoff={} DST: {}", &opt.zonename, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
+                println!("{} {} UT -> {} gmtoff={} DST: {}", &opt.zonename.unwrap(), i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
         }
         return Ok(())
     }
 
     match opt.year {
-        None => println!("{} {} {}, week number: {}", &opt.zonename, tzdata.datetime.to_rfc2822(), tzdata.abbreviation, tzdata.week_number.to_string()),
+        None => println!("{} {} {}, week number: {}", &opt.zonename.unwrap(), tzdata.datetime.to_rfc2822(), tzdata.abbreviation, tzdata.week_number.to_string()),
         Some(y) => {
             for i in &timechanges {
                 // Timechange's year
                 let cy: i32=  i.time.format("%Y").to_string().parse()?;
                 // Timechange's year does not match selected year ? we do not display it
                 if cy == y {
-                    println!("{} {} UT -> {} gmtoff={} DST: {}", &opt.zonename, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
+                    println!("{} {} UT -> {} gmtoff={} DST: {}", &opt.zonename.unwrap(), i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
                 }
             }
         }
