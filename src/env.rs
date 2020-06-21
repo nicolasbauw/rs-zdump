@@ -23,7 +23,7 @@ pub struct Args {
     // Specify a year
     pub y: bool,
     // View year's timechanges
-    pub year: Option<i32> 
+    pub year: Option<i32>,
 }
 
 pub fn get_cargs() -> Option<Args> {
@@ -31,7 +31,6 @@ pub fn get_cargs() -> Option<Args> {
     let b = a.clone();
     let mut parsed_args: Vec<usize> = Vec::new();
     let mut comparator: Vec<usize> = Vec::new();
-    
     // Zonename, -a, -y, -h, year
     let mut args: (&str, bool, bool, Option<i32>) = ("", false, false, None);
 
@@ -91,12 +90,20 @@ pub fn get_cargs() -> Option<Args> {
         println!("Cmdline args : {:?}", b);
         println!("Parsed args : {:?}", parsed_args);
         println!("Comparator : {:?}", comparator);
-        println!("Zone : {:?}, -a : {}, -y : {}, year : {:?}", args.0, args.1, args.2, args.3);
+        println!(
+            "Zone : {:?}, -a : {}, -y : {}, year : {:?}",
+            args.0, args.1, args.2, args.3
+        );
     }
+
     Some(Args {
-        zonename: if args.0 == "" { None } else { Some((args.0).to_string()) },
+        zonename: if args.0 == "" {
+            None
+        } else {
+            Some((args.0).to_string())
+        },
         a: args.1,
         y: args.2,
-        year: args.3
+        year: args.3,
     })
 }
