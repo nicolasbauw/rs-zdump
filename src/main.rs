@@ -45,7 +45,10 @@ use tzparse::TzError;
 
 fn main() -> Result<(), TzError> {
     // Getting cmdline args
-    let opt = get_cargs();
+    let opt = match get_cargs() {
+        Some(o) => o,
+        None => return Ok(())
+    };
     let z = match opt.zonename {
         Some(s) => String::from(s),
         None => String::from("Europe/Paris")

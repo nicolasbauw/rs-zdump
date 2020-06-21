@@ -22,20 +22,18 @@ pub struct Args {
     pub a: bool,
     // Specify a year
     pub y: bool,
-    // Help
-    pub h: bool,
     // View year's timechanges
     pub year: Option<i32> 
 }
 
-pub fn get_cargs() -> Args {
+pub fn get_cargs() -> Option<Args> {
     let mut a: Vec<String> = env::args().collect();
     let b = a.clone();
     let mut parsed_args: Vec<usize> = Vec::new();
     let mut comparator: Vec<usize> = Vec::new();
     
     // Zonename, -a, -y, -h, year
-    let mut args: (&str, bool, bool, bool, Option<i32>) = ("", false, false, false, None);
+    let mut args: (&str, bool, bool, Option<i32>) = ("", false, false, None);
 
     for i in 1..a.len() {
         match a[i].as_ref() {
@@ -47,7 +45,7 @@ pub fn get_cargs() -> Args {
                 args.2 = true;
                 match a[i + 1].parse::<i32>() {
                     Ok(y) => {
-                        args.4 = Some(y);
+                        args.3 = Some(y);
                     }
                     Err(_) => println!("Invalid year"),
                 };
@@ -55,8 +53,12 @@ pub fn get_cargs() -> Args {
                 a[i].truncate(1);
             }
             "-h" => {
-                args.3 = true;
-                a[i].truncate(1);
+                println!("{}", HELP);
+                return None;
+            }
+            "-V" => {
+                println!("{}", VERSION);
+                return None;
             }
             &_ => {
                 a[i].truncate(1);
@@ -89,13 +91,12 @@ pub fn get_cargs() -> Args {
         println!("Cmdline args : {:?}", b);
         println!("Parsed args : {:?}", parsed_args);
         println!("Comparator : {:?}", comparator);
-        println!("Zone : {:?}, -a : {}, -y : {}, -h : {}, year : {:?}", args.0, args.1, args.2, args.3, args.4);
+        println!("Zone : {:?}, -a : {}, -y : {}, year : {:?}", args.0, args.1, args.2, args.3);
     }
-    Args {
+    Some(Args {
         zonename: if args.0 == "" { None } else { Some((args.0).to_string()) },
         a: args.1,
         y: args.2,
-        h: args.3,
-        year: args.4
-    }
+        year: args.3
+    })
 }
