@@ -1,4 +1,4 @@
-//! An alternative version of the zdump utility.
+//! A Rust version of the zdump utility.
 //!
 //! Without arguments, shows current time and data about the Europe/Paris zone:
 //! ```text
@@ -37,7 +37,7 @@
 //! 
 //! It uses system TZfiles (default location on Linux and Macos /usr/share/zoneinfo). On Windows, default expected location is HOME/.zoneinfo. You can override the TZfiles default location with the TZFILES_DIR environment variable. Example for Windows:
 //!
-//! $env:TZFILES_DIR="C:\Users\nbauw\Dev\rs-tzfile\zoneinfo\"; zdump
+//! $env:TZFILES_DIR="C:\Users\nbauw\Dev\rs-tzfile\zoneinfo\"; zdump.exe
 
 mod env;
 use env::get_cargs;

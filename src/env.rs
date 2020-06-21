@@ -1,7 +1,7 @@
 use std::env;
 
 static VERSION: &str = env!("CARGO_PKG_VERSION");
-static HELP: &str = "An alternative version of zdump
+static HELP: &str = "A Rust version of zdump
 
 USAGE:
     zdump [zonename] [OPTIONS]
@@ -20,8 +20,6 @@ pub struct Args {
     pub zonename: Option<String>,
     // View all zone's timechanges
     pub a: bool,
-    // Specify a year
-    pub y: bool,
     // View year's timechanges
     pub year: Option<i32>,
 }
@@ -103,7 +101,6 @@ pub fn get_cargs() -> Option<Args> {
             Some((args.0).to_string())
         },
         a: args.1,
-        y: args.2,
         year: args.3,
     })
 }

@@ -1,12 +1,12 @@
 [package]
 name = "zdump"
-version = "1.0.2"
+version = "1.1.0"
 authors = ["Nicolas BAUW <nbauw@hotmail.com>"]
 edition = "2018"
 repository = "https://github.com/nicolasbauw/rs-zdump"
 categories = ["command-line-utilities"]
 keywords = ["timezone", "timechanges", "zdump", "time", "date"]
-description = "An alternative version of the zdump utility"
+description = "A Rust version of the zdump utility."
 license = "GPL-3.0"
 readme = "README.md"
 
@@ -14,4 +14,3 @@ readme = "README.md"
 
 [dependencies]
 tzparse = "1.0"
-structopt = { version = "0.3.2", default-features = false }

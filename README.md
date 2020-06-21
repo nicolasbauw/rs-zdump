@@ -3,7 +3,7 @@
 [![Current Crates.io Version](https://img.shields.io/crates/v/zdump.svg)](https://crates.io/crates/zdump)
 [![Downloads badge](https://img.shields.io/crates/d/zdump.svg)](https://crates.io/crates/zdump)
 
-An alternative version of the zdump utility.
+A Rust version of the zdump utility.
 
 Without arguments, shows current time and data about the Europe/Paris zone:
 ```
@@ -42,6 +42,6 @@ America/Phoenix Sun 29 Oct 08:00:00 1967 UT -> MST gmtoff=-25200 DST: false
 
 It uses system TZfiles (default location on Linux and Macos /usr/share/zoneinfo). On Windows, default expected location is HOME/.zoneinfo. You can override the TZfiles default location with the TZFILES_DIR environment variable. Example for Windows:
 
-$env:TZFILES_DIR="C:\Users\nbauw\Dev\rs-tzfile\zoneinfo\"; zdump
+$env:TZFILES_DIR="C:\Users\nbauw\Dev\rs-tzfile\zoneinfo\"; zdump.exe
 
 License: GPL-3.0
