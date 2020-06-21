@@ -1,14 +1,12 @@
 use std::env;
 
 static VERSION: &str = env!("CARGO_PKG_VERSION");
-static HELP: &str = "A Rust version of zdump
-
-USAGE:
-    zdump [zonename] [OPTIONS]
+static HELP: &str = "USAGE:
+    zdump [OPTIONS] [ZONENAME]
 
 OPTIONS:
-    -a               View all zone's timechanges
-    -y <year>        View year's timechanges
+    -a               View all transitions
+    -y <year>        View year's transitions
     -h, --help       Prints help information
     -V, --version    Prints version information
 
@@ -29,7 +27,7 @@ pub fn get_cargs() -> Option<Args> {
     let b = a.clone();
     let mut parsed_args: Vec<usize> = Vec::new();
     let mut comparator: Vec<usize> = Vec::new();
-    // Zonename, -a, -y, -h, year
+    // Zonename, -a, -y, year
     let mut args: (&str, bool, bool, Option<i32>) = ("", false, false, None);
 
     for i in 1..a.len() {
@@ -44,17 +42,20 @@ pub fn get_cargs() -> Option<Args> {
                     Ok(y) => {
                         args.3 = Some(y);
                     }
-                    Err(_) => println!("Invalid year"),
+                    Err(_) => {
+                        println!("Invalid year");
+                        return None;
+                    }
                 };
                 parsed_args.push(i + 1);
                 a[i].truncate(1);
             }
-            "-h" => {
+            "-h" | "--help" => {
                 println!("{}", HELP);
                 return None;
             }
-            "-V" => {
-                println!("{}", VERSION);
+            "-V" | "--version" => {
+                println!("zdump (Rust) {}", VERSION);
                 return None;
             }
             &_ => {
