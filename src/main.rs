@@ -1,12 +1,6 @@
 //! A Rust version of the zdump utility.
-//!
-//! Without arguments, shows current time and data about the Europe/Paris zone:
-//! ```text
-//! zdump
-//! Europe/Paris Thu, 19 Dec 2019 13:48:47 +0100 CET, week number: 51
-//! ````
 //! 
-//! Same thing when specifying a zonename: 
+//! Sample output when specifying only a zonename: 
 //! ```text
 //! zdump America/Phoenix
 //! America/Phoenix Thu, 19 Dec 2019 05:52:04 -0700 MST, week number: 51
@@ -19,7 +13,7 @@
 //! Europe/Paris Sun 25 Oct 01:00:00 2020 UT -> CET gmtoff=3600 DST: false 
 //! ```
 //! 
-//! To display all zone's timechanges: 
+//! To display all zone's transition times: 
 //! ```text
 //! zdump America/Phoenix -a     
 //! America/Phoenix Sun 18 Nov 19:00:00 1883 UT -> MST gmtoff=-25200 DST: false
@@ -34,10 +28,8 @@
 //! America/Phoenix Sun 30 Apr 09:00:00 1967 UT -> MDT gmtoff=-21600 DST: true
 //! America/Phoenix Sun 29 Oct 08:00:00 1967 UT -> MST gmtoff=-25200 DST: false
 //! ```
+//! -h and -V prints help and version information, respectively.
 //! 
-//! It uses system TZfiles (default location on Linux and Macos /usr/share/zoneinfo). On Windows, default expected location is HOME/.zoneinfo. You can override the TZfiles default location with the TZFILES_DIR environment variable. Example for Windows:
-//!
-//! $env:TZFILES_DIR="C:\Users\nbauw\Dev\rs-tzfile\zoneinfo\"; zdump.exe
 
 mod env;
 use env::get_cargs;
@@ -51,7 +43,7 @@ fn main() -> Result<(), TzError> {
     };
     let z = match opt.zonename {
         Some(s) => String::from(s),
-        None => String::from("Europe/Paris")
+        None => return Ok(())
     };
 
     let tzdata = tzparse::get_zoneinfo(&z)?;
@@ -75,7 +67,7 @@ fn main() -> Result<(), TzError> {
     }
 
     match opt.year {
-        None => println!("{} {} {}, week number: {}", z, tzdata.datetime.to_rfc2822(), tzdata.abbreviation, tzdata.week_number.to_string()),
+        None => println!("{} {} {}, week number: {}", tzdata.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation, tzdata.week_number.to_string()),
         Some(y) => {
             for i in &timechanges {
                 // Timechange's year

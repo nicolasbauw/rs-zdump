@@ -11,7 +11,7 @@ OPTIONS:
     -V, --version    Prints version information
 
 ARGS:
-    [ZONENAME]       The timezone to query [default: Europe/Paris]";
+    [ZONENAME]       The timezone to query";
 
 pub struct Args {
     // The timezone to query
