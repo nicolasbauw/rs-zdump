@@ -61,20 +61,23 @@ fn main() -> Result<(), TzError> {
 
     if opt.a {
         for i in &timechanges {
-                println!("{} {} UT -> {} gmtoff={} DST: {}", tzdata.timezone, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
+            // we do not display the transition time if timestamp = 0x7FFFFFFF (Tue 19 Jan 03:14:07 2038)
+            if i.time.timestamp() != 2147483647 {
+                println!("{} {} UT -> {} gmtoff={} DST: {}", tzdata.timezone, i.time.format("%a %e %b %T %Y"), i.abbreviation, i.gmtoff, i.isdst);
+            }
         }
         return Ok(())
     }
 
     match opt.year {
-        None => println!("{} {} {}, week number: {}", tzdata.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation, tzdata.week_number.to_string()),
+        None => println!("{} {} {}, week number: {}", tzdata.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation, tzdata.week_number),
         Some(y) => {
             for i in &timechanges {
                 // Timechange's year
                 let cy: i32=  i.time.format("%Y").to_string().parse()?;
                 // Timechange's year does not match selected year ? we do not display it
                 if cy == y {
-                    println!("{} {} UT -> {} gmtoff={} DST: {}", tzdata.timezone, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
+                    println!("{} {} UT -> {} gmtoff={} DST: {}", tzdata.timezone, i.time.format("%a %e %b %T %Y"), i.abbreviation, i.gmtoff, i.isdst);
                 }
             }
         }
