@@ -61,7 +61,7 @@ fn main() -> Result<(), TzError> {
 
     if opt.a {
         for i in &timechanges {
-                println!("{} {} UT -> {} gmtoff={} DST: {}", z, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
+                println!("{} {} UT -> {} gmtoff={} DST: {}", tzdata.timezone, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
         }
         return Ok(())
     }
@@ -74,7 +74,7 @@ fn main() -> Result<(), TzError> {
                 let cy: i32=  i.time.format("%Y").to_string().parse()?;
                 // Timechange's year does not match selected year ? we do not display it
                 if cy == y {
-                    println!("{} {} UT -> {} gmtoff={} DST: {}", z, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
+                    println!("{} {} UT -> {} gmtoff={} DST: {}", tzdata.timezone, i.time.format("%a %e %b %T %Y").to_string(), i.abbreviation, i.gmtoff, i.isdst);
                 }
             }
         }
