@@ -5,28 +5,22 @@
 
 A Rust version of the zdump utility.
 
-Without arguments, shows current time and data about the Europe/Paris zone:
+Sample output when specifying only a zonename:
 ```
-zdump
-Europe/Paris Thu, 19 Dec 2019 13:48:47 +0100 CET, week number: 51
-````
-
-Same thing when specifying a zonename:
-```text
-zdump America/Phoenix
+zdump /usr/share/zoneinfo/America/Phoenix
 America/Phoenix Thu, 19 Dec 2019 05:52:04 -0700 MST, week number: 51
 ````
 
 When specifying a zonename and a year, outputs timechanges for that year:
 ```text
-zdump Europe/Paris -y 2020
+zdump /usr/share/zoneinfo/Europe/Paris -y 2020
 Europe/Paris Sun 29 Mar 01:00:00 2020 UT -> CEST gmtoff=7200 DST: true
 Europe/Paris Sun 25 Oct 01:00:00 2020 UT -> CET gmtoff=3600 DST: false
 ```
 
-To display all zone's timechanges:
+To display all zone's transition times:
 ```
-zdump America/Phoenix -a
+zdump /usr/share/zoneinfo/America/Phoenix -a
 America/Phoenix Sun 18 Nov 19:00:00 1883 UT -> MST gmtoff=-25200 DST: false
 America/Phoenix Sun 31 Mar 09:00:00 1918 UT -> MDT gmtoff=-21600 DST: true
 America/Phoenix Sun 27 Oct 08:00:00 1918 UT -> MST gmtoff=-25200 DST: false
@@ -39,9 +33,7 @@ America/Phoenix Sun  1 Oct 06:01:00 1944 UT -> MST gmtoff=-25200 DST: false
 America/Phoenix Sun 30 Apr 09:00:00 1967 UT -> MDT gmtoff=-21600 DST: true
 America/Phoenix Sun 29 Oct 08:00:00 1967 UT -> MST gmtoff=-25200 DST: false
 ```
+-h and -V prints help and version information, respectively.
 
-It uses system TZfiles (default location on Linux and Macos /usr/share/zoneinfo). On Windows, default expected location is HOME/.zoneinfo. You can override the TZfiles default location with the TZFILES_DIR environment variable. Example for Windows:
-
-$env:TZFILES_DIR="C:\Users\nbauw\Dev\rs-tzfile\zoneinfo\"; zdump.exe
 
 License: GPL-3.0
