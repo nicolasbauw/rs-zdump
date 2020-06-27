@@ -1,6 +1,6 @@
 //! A Rust version of the zdump utility.
 //! 
-//! Sample output when specifying only a zonename: 
+//! Output example when specifying only a zonename: 
 //! ```text
 //! zdump /usr/share/zoneinfo/America/Phoenix
 //! America/Phoenix Thu, 19 Dec 2019 05:52:04 -0700 MST, week number: 51
