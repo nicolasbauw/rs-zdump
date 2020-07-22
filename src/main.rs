@@ -33,9 +33,9 @@
 
 mod env;
 use env::get_cargs;
-use tzparse::TzError;
+use std::error::Error;
 
-fn main() -> Result<(), TzError> {
+fn main() -> Result<(), Box<dyn Error>> {
     // Getting cmdline args
     let opt = match get_cargs() {
         Some(o) => o,
