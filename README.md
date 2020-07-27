@@ -35,7 +35,4 @@ America/Phoenix Sun 29 Oct 08:00:00 1967 UT -> MST gmtoff=-25200 DST: false
 ```
 -h and -V prints help and version information, respectively.
 
-[Here](https://techblog.pagesperso-orange.fr/) you can download binaries for Windows / Linux.
-
-
 License: GPL-3.0
