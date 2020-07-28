@@ -68,12 +68,9 @@ pub fn get_cargs() -> Option<Args> {
                 a[i].truncate(1);
             }
         }
-        match a[i].as_ref() {
-            "-" => {
-                parsed_args.push(i);
-            }
-            &_ => {}
-        }
+        if let "-" =  a[i].as_ref() {
+            parsed_args.push(i);
+        }    
     }
 
     parsed_args.sort();
