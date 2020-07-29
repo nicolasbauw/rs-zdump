@@ -5,8 +5,9 @@ static HELP: &str = "USAGE:
     zdump [OPTIONS] [ZONENAME]
 
 OPTIONS:
-    -a               View all transitions
-    -y <year>        View year's transitions
+    -a               Prints all transitions
+    -y <year>        Prints year's transitions
+    -w               Prints week number
     -h, --help       Prints help information
     -V, --version    Prints version information
 
