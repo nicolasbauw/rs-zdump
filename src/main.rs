@@ -76,7 +76,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     }
 
     match opt.year {
-        None => println!("{} {} {}, week number: {}", tzdata.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation, tzdata.week_number),
+        None => if opt.w { println!("{} {} {}, week number: {}", tzdata.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation, tzdata.week_number) }
+                else { println!("{} {} {}", tzdata.timezone, tzdata.datetime.to_rfc2822(), tzdata.abbreviation) },
         Some(y) => {
             for i in &timechanges {
                 // Timechange's year
