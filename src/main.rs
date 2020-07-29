@@ -3,6 +3,12 @@
 //! Output example when specifying only a zonename: 
 //! ```text
 //! zdump /usr/share/zoneinfo/America/Phoenix
+//! America/Phoenix Thu, 19 Dec 2019 05:52:04 -0700 MST
+//! ````
+//! 
+//! To display week number: 
+//! ```text
+//! zdump /usr/share/zoneinfo/America/Phoenix -w
 //! America/Phoenix Thu, 19 Dec 2019 05:52:04 -0700 MST, week number: 51
 //! ````
 //!
