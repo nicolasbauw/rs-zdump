@@ -39,9 +39,16 @@
 
 mod env;
 use env::get_cargs;
-use std::error::Error;
+use std::{ error::Error, process };
 
-fn main() -> Result<(), Box<dyn Error>> {
+fn main() {
+    if let Err(e) = zdump() {
+        println!("{}", e);
+        process::exit(1);
+    }
+}
+
+fn zdump() -> Result<(), Box<dyn Error>> {
     // Getting cmdline args
     let opt = match get_cargs() {
         Some(o) => o,
