@@ -8,7 +8,7 @@ pub fn zdump() -> Result<(), Box<dyn Error>> {
         None => return Ok(())
     };
     let z = match opt.zonename {
-        Some(s) => String::from(s),
+        Some(s) => s,
         None => return Ok(())
     };
 
