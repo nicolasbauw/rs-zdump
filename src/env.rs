@@ -1,7 +1,7 @@
 use std::env;
 
-static VERSION: &str = env!("CARGO_PKG_VERSION");
-static HELP: &str = "USAGE:
+const VERSION: &str = env!("CARGO_PKG_VERSION");
+const HELP: &str = "USAGE:
     zdump [OPTIONS] [ZONENAME]
 
 OPTIONS:
