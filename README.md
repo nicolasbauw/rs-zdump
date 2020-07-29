@@ -6,8 +6,14 @@
 A Rust version of the zdump utility.
 
 Output example when specifying only a zonename:
-```
+```text
 zdump /usr/share/zoneinfo/America/Phoenix
+America/Phoenix Thu, 19 Dec 2019 05:52:04 -0700 MST
+````
+
+To display week number:
+```text
+zdump /usr/share/zoneinfo/America/Phoenix -w
 America/Phoenix Thu, 19 Dec 2019 05:52:04 -0700 MST, week number: 51
 ````
 
@@ -34,5 +40,6 @@ America/Phoenix Sun 30 Apr 09:00:00 1967 UT -> MDT gmtoff=-21600 DST: true
 America/Phoenix Sun 29 Oct 08:00:00 1967 UT -> MST gmtoff=-25200 DST: false
 ```
 -h and -V prints help and version information, respectively.
+
 
 License: GPL-3.0
