@@ -2,7 +2,7 @@
 
 ### v1.2.0 (2020-07-29)
 
-- [Changed] week number is not displayed by default
+- [Changed] week number is no longer displayed by default
 - [Added] week number display commutator (-w)
 - [Changed] better formatting of error messages
 
