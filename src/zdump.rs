@@ -29,7 +29,7 @@ pub fn zdump() -> Result<(), Box<dyn Error>> {
         for i in &timechanges {
             // we do not display the transition time if timestamp = 0x7FFFFFFF (Tue 19 Jan 03:14:07 2038)
             if i.time.timestamp() != 2147483647 {
-                println!("{} {} UT -> {} gmtoff={} DST: {}", tzdata.timezone, i.time.format("%a %e %b %T %Y"), i.abbreviation, i.gmtoff, i.isdst);
+                println!("{} {} UT -> {} gmtoff={} DST: {}", tzdata.timezone, i.time.format("%a, %d %b %Y %T"), i.abbreviation, i.gmtoff, i.isdst);
             }
         }
         return Ok(())
@@ -44,7 +44,7 @@ pub fn zdump() -> Result<(), Box<dyn Error>> {
                 let cy: i32=  i.time.format("%Y").to_string().parse()?;
                 // Timechange's year does not match selected year ? we do not display it
                 if cy == y {
-                    println!("{} {} UT -> {} gmtoff={} DST: {}", tzdata.timezone, i.time.format("%a %e %b %T %Y"), i.abbreviation, i.gmtoff, i.isdst);
+                    println!("{} {} UT -> {} gmtoff={} DST: {}", tzdata.timezone, i.time.format("%a, %d %b %Y %T"), i.abbreviation, i.gmtoff, i.isdst);
                 }
             }
         }

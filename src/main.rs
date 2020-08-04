@@ -2,37 +2,37 @@
 //! 
 //! Output example when specifying only a zonename: 
 //! ```text
-//! zdump /usr/share/zoneinfo/America/Phoenix
-//! America/Phoenix Thu, 19 Dec 2019 05:52:04 -0700 MST
+//! zdump /usr/share/zoneinfo/Europe/Paris
+//! Europe/Paris Tue, 04 Aug 2020 23:26:09 +0200 CEST
 //! ````
 //! 
 //! To display week number: 
 //! ```text
-//! zdump /usr/share/zoneinfo/America/Phoenix -w
-//! America/Phoenix Thu, 19 Dec 2019 05:52:04 -0700 MST, week number: 51
+//! zdump /usr/share/zoneinfo/Europe/Paris -w
+//! Europe/Paris Tue, 04 Aug 2020 23:26:09 +0200 CEST, week number: 32
 //! ````
 //!
 //! When specifying a zonename and a year, outputs timechanges for that year: 
 //! ```text
 //! zdump /usr/share/zoneinfo/Europe/Paris -y 2020
-//! Europe/Paris Sun 29 Mar 01:00:00 2020 UT -> CEST gmtoff=7200 DST: true
-//! Europe/Paris Sun 25 Oct 01:00:00 2020 UT -> CET gmtoff=3600 DST: false 
+//! Europe/Paris Sun, 29 Mar 2020 01:00:00 UT -> CEST gmtoff=7200 DST: true
+//! Europe/Paris Sun, 25 Oct 2020 01:00:00 UT -> CET gmtoff=3600 DST: false
 //! ```
 //! 
 //! To display all zone's transition times: 
 //! ```text
 //! zdump /usr/share/zoneinfo/America/Phoenix -a     
-//! America/Phoenix Sun 18 Nov 19:00:00 1883 UT -> MST gmtoff=-25200 DST: false
-//! America/Phoenix Sun 31 Mar 09:00:00 1918 UT -> MDT gmtoff=-21600 DST: true
-//! America/Phoenix Sun 27 Oct 08:00:00 1918 UT -> MST gmtoff=-25200 DST: false
-//! America/Phoenix Sun 30 Mar 09:00:00 1919 UT -> MDT gmtoff=-21600 DST: true
-//! America/Phoenix Sun 26 Oct 08:00:00 1919 UT -> MST gmtoff=-25200 DST: false
-//! America/Phoenix Mon  9 Feb 09:00:00 1942 UT -> MWT gmtoff=-21600 DST: true
-//! America/Phoenix Sat  1 Jan 06:01:00 1944 UT -> MST gmtoff=-25200 DST: false
-//! America/Phoenix Sat  1 Apr 07:01:00 1944 UT -> MWT gmtoff=-21600 DST: true
-//! America/Phoenix Sun  1 Oct 06:01:00 1944 UT -> MST gmtoff=-25200 DST: false
-//! America/Phoenix Sun 30 Apr 09:00:00 1967 UT -> MDT gmtoff=-21600 DST: true
-//! America/Phoenix Sun 29 Oct 08:00:00 1967 UT -> MST gmtoff=-25200 DST: false
+//! America/Phoenix Sun, 18 Nov 1883 19:00:00 UT -> MST gmtoff=-25200 DST: false
+//! America/Phoenix Sun, 31 Mar 1918 09:00:00 UT -> MDT gmtoff=-21600 DST: true
+//! America/Phoenix Sun, 27 Oct 1918 08:00:00 UT -> MST gmtoff=-25200 DST: false
+//! America/Phoenix Sun, 30 Mar 1919 09:00:00 UT -> MDT gmtoff=-21600 DST: true
+//! America/Phoenix Sun, 26 Oct 1919 08:00:00 UT -> MST gmtoff=-25200 DST: false
+//! America/Phoenix Mon, 09 Feb 1942 09:00:00 UT -> MWT gmtoff=-21600 DST: true
+//! America/Phoenix Sat, 01 Jan 1944 06:01:00 UT -> MST gmtoff=-25200 DST: false
+//! America/Phoenix Sat, 01 Apr 1944 07:01:00 UT -> MWT gmtoff=-21600 DST: true
+//! America/Phoenix Sun, 01 Oct 1944 06:01:00 UT -> MST gmtoff=-25200 DST: false
+//! America/Phoenix Sun, 30 Apr 1967 09:00:00 UT -> MDT gmtoff=-21600 DST: true
+//! America/Phoenix Sun, 29 Oct 1967 08:00:00 UT -> MST gmtoff=-25200 DST: false
 //! ```
 //! -h and -V prints help and version information, respectively.
 //! 

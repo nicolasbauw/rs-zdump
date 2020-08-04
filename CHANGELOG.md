@@ -1,5 +1,9 @@
 # Changelog
 
+### v1.2.1 (2020-08-04)
+
+- [Fixed] Date formatting differences between -a, -y and no option
+
 ### v1.2.0 (2020-07-29)
 
 - [Changed] week number is no longer displayed by default
