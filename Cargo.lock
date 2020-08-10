@@ -89,7 +89,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "zdump"
-version = "1.2.1"
+version = "1.2.2"
 dependencies = [
  "tzparse 1.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
