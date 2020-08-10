@@ -17,7 +17,7 @@ zdump /usr/share/zoneinfo/Europe/Paris -w
 Europe/Paris Tue, 04 Aug 2020 23:26:09 +0200 CEST, week number: 32
 ````
 
-When specifying a zonename and a year, outputs timechanges for that year:
+When specifying a zonename and a year, outputs transition times for that year:
 ```text
 zdump /usr/share/zoneinfo/Europe/Paris -y 2020
 Europe/Paris Sun, 29 Mar 2020 01:00:00 UT -> CEST, utc_offset=7200, DST: true
