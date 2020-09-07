@@ -1,5 +1,6 @@
 use crate::env::get_cargs;
 use std::error::Error;
+use libtzfile::Tz;
 
 pub fn zdump() -> Result<(), Box<dyn Error>> {
     // Getting cmdline args
@@ -12,7 +13,8 @@ pub fn zdump() -> Result<(), Box<dyn Error>> {
         None => return Ok(())
     };
 
-    let tzdata = tzparse::get_zoneinfo(&z)?;
+    let tz = Tz::new(&z)?;
+    let tzdata = tz.zoneinfo()?;
 
     // Provided year (or current year by default)
     let year: i32 = match opt.year {
@@ -23,13 +25,13 @@ pub fn zdump() -> Result<(), Box<dyn Error>> {
             };
 
     // Parsing timechanges
-    let timechanges = tzparse::get_timechanges(&z, if !opt.a { Some(year) } else { None })?;
+    let timechanges = tz.transition_times(if !opt.a { Some(year) } else { None })?;
 
     if opt.a {
         for i in &timechanges {
             // we do not display the transition time if timestamp = 0x7FFFFFFF (Tue 19 Jan 03:14:07 2038)
             if i.time.timestamp() != 2147483647 {
-                println!("{} {} UT -> {}, utc_offset={}, DST: {}", tzdata.timezone, i.time.format("%a, %d %b %Y %T"), i.abbreviation, i.gmtoff, i.isdst);
+                println!("{} {} UT -> {}, utc_offset={}, DST: {}", tzdata.timezone, i.time.format("%a, %d %b %Y %T"), i.abbreviation, i.utc_offset, i.isdst);
             }
         }
         return Ok(())
@@ -44,7 +46,7 @@ pub fn zdump() -> Result<(), Box<dyn Error>> {
                 let cy: i32=  i.time.format("%Y").to_string().parse()?;
                 // Timechange's year does not match selected year ? we do not display it
                 if cy == y {
-                    println!("{} {} UT -> {}, utc_offset={}, DST: {}", tzdata.timezone, i.time.format("%a, %d %b %Y %T"), i.abbreviation, i.gmtoff, i.isdst);
+                    println!("{} {} UT -> {}, utc_offset={}, DST: {}", tzdata.timezone, i.time.format("%a, %d %b %Y %T"), i.abbreviation, i.utc_offset, i.isdst);
                 }
             }
         }
