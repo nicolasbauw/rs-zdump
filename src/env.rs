@@ -8,6 +8,7 @@ OPTIONS:
     -a               Prints all transitions
     -y <year>        Prints year's transitions
     -w               Prints week number
+    -r               Prints TZFile raw contents
     -h, --help       Prints help information
     -V, --version    Prints version information
 
@@ -30,8 +31,8 @@ pub fn get_cargs() -> Option<Args> {
     let b = a.clone();
     let mut parsed_args: Vec<usize> = Vec::new();
     let mut comparator: Vec<usize> = Vec::new();
-    // Zonename, -a, -y, year, week number display
-    let mut args: (&str, bool, bool, Option<i32>, bool) = ("", false, false, None, false);
+    // Zonename, -a, -y, year, -w, -r
+    let mut args: (&str, bool, bool, Option<i32>, bool, bool) = ("", false, false, None, false, false);
 
     for i in 1..a.len() {
         match a[i].as_ref() {
@@ -55,6 +56,10 @@ pub fn get_cargs() -> Option<Args> {
                     }
                 };
                 parsed_args.push(i + 1);
+                a[i].truncate(1);
+            }
+            "-r" => {
+                args.5 = true;
                 a[i].truncate(1);
             }
             "-h" | "--help" => {
@@ -94,8 +99,8 @@ pub fn get_cargs() -> Option<Args> {
         println!("Parsed args : {:?}", parsed_args);
         println!("Comparator : {:?}", comparator);
         println!(
-            "Zone : {:?}, -a : {}, -y : {}, -w : {}, year : {:?}",
-            args.0, args.1, args.2, args.4, args.3
+            "Zone : {:?}, -a : {}, -y : {}, -w : {}, -r : {},  year : {:?}",
+            args.0, args.1, args.2, args.4, args.5, args.3
         );
     }
 
