@@ -39,6 +39,14 @@ America/Phoenix Sun, 01 Oct 1944 06:01:00 UT -> MST, utc_offset=-25200, DST: fal
 America/Phoenix Sun, 30 Apr 1967 09:00:00 UT -> MDT, utc_offset=-21600, DST: true
 America/Phoenix Sun, 29 Oct 1967 08:00:00 UT -> MST, utc_offset=-25200, DST: false
 ```
+
+To display the TZFile's raw data and libtzfile's output:
+```
+zdump /usr/share/zoneinfo/EST -r
+Tz { tzh_timecnt_data: [], tzh_timecnt_indices: [], tzh_typecnt: [Ttinfo { tt_gmtoff: -18000, tt_isdst: 0, tt_abbrind: 0 }], tz_abbr: ["EST"], name: "EST" }
+Tzinfo { timezone: "EST", utc_datetime: 2021-07-09T20:57:50.343062Z, datetime: 2021-07-09T15:57:50.343062-05:00, dst_from: None, dst_until: None, dst_period: false, raw_offset: -18000, dst_offset: 0, utc_offset: -05:00, abbreviation: "EST", week_number: 27 }
+````
+
 -h and -V prints help and version information, respectively.
 
 
