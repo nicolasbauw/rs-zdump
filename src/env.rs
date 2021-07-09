@@ -8,7 +8,7 @@ OPTIONS:
     -a               Prints all transitions
     -y <year>        Prints year's transitions
     -w               Prints week number
-    -r               Prints TZFile raw contents
+    -r, --raw        Prints TZFile raw contents
     -h, --help       Prints help information
     -V, --version    Prints version information
 
@@ -60,7 +60,7 @@ pub fn get_cargs() -> Option<Args> {
                 parsed_args.push(i + 1);
                 a[i].truncate(1);
             }
-            "-r" => {
+            "-r" | "--raw" => {
                 args.5 = true;
                 a[i].truncate(1);
             }
