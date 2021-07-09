@@ -31,6 +31,11 @@ pub fn zdump() -> Result<(), Box<dyn Error>> {
         Err(e) => return Err(Box::new(e))
     };
 
+    if opt.r {
+        println!("{:?}", tz);
+        println!("{:?}\n", tz.zoneinfo()?);
+    }
+
     if opt.a {
         for i in &timechanges {
             // we do not display the transition time if timestamp = 0x7FFFFFFF (Tue 19 Jan 03:14:07 2038)
