@@ -33,7 +33,8 @@ pub fn zdump() -> Result<(), Box<dyn Error>> {
 
     if opt.r {
         println!("{:?}\n", tz);
-        println!("{:?}\n", tz.zoneinfo()?);
+        println!("{:?}", tz.zoneinfo()?);
+        return Ok(())
     }
 
     if opt.a {
