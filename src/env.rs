@@ -22,6 +22,8 @@ pub struct Args {
     pub a: bool,
     // Display week number
     pub w: bool,
+    // View TZFile rawdata
+    pub r: bool,
     // View year's timechanges
     pub year: Option<i32>,
 }
@@ -112,6 +114,7 @@ pub fn get_cargs() -> Option<Args> {
         },
         a: args.1,
         w: args.4,
+        r: args.5,
         year: args.3,
     })
 }
