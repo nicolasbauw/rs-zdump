@@ -1,6 +1,6 @@
 use crate::env::get_cargs;
 use std::error::Error;
-use libtzfile::Tz;
+use libtzfile::{Tz, TzError};
 
 pub fn zdump() -> Result<(), Box<dyn Error>> {
     // Getting cmdline args
@@ -25,7 +25,11 @@ pub fn zdump() -> Result<(), Box<dyn Error>> {
             };
 
     // Parsing timechanges
-    let timechanges = tz.transition_times(if !opt.a { Some(year) } else { None })?;
+    let timechanges = match tz.transition_times(if !opt.a { Some(year) } else { None }) {
+        Ok(tt) => tt,
+        Err(TzError::NoData) => Vec::new(),
+        Err(e) => return Err(Box::new(e))
+    };
 
     if opt.a {
         for i in &timechanges {
