@@ -32,7 +32,7 @@ pub fn zdump() -> Result<(), Box<dyn Error>> {
     };
 
     if opt.r {
-        println!("{:?}", tz);
+        println!("{:?}\n", tz);
         println!("{:?}\n", tz.zoneinfo()?);
     }
 
