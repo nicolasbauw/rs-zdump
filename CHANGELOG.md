@@ -1,5 +1,10 @@
 # Changelog
 
+### v1.3.0 (2021-07-10)
+
+- [Fixed] Incorrect display of timezones without transition times
+- [Added] -r commutator for raw/debug data display
+
 ### v1.2.1 (2020-08-04)
 
 - [Fixed] Date formatting differences between -a, -y and no option
