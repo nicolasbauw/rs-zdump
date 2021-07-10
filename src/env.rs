@@ -8,7 +8,7 @@ OPTIONS:
     -a               Prints all transitions
     -y <year>        Prints year's transitions
     -w               Prints week number
-    -r, --raw        Prints TZFile raw contents
+    -r, --raw        Prints raw and debug data
     -h, --help       Prints help information
     -V, --version    Prints version information
 
