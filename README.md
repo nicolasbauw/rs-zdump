@@ -40,7 +40,7 @@ America/Phoenix Sun, 30 Apr 1967 09:00:00 UT -> MDT, utc_offset=-21600, DST: tru
 America/Phoenix Sun, 29 Oct 1967 08:00:00 UT -> MST, utc_offset=-25200, DST: false
 ```
 
-To display the TZFile's raw data and libtzfile's output:
+To display raw and debug data:
 ```
 zdump /usr/share/zoneinfo/EST -r
 Tz { tzh_timecnt_data: [], tzh_timecnt_indices: [], tzh_typecnt: [Ttinfo { tt_gmtoff: -18000, tt_isdst: 0, tt_abbrind: 0 }], tz_abbr: ["EST"], name: "EST" }
