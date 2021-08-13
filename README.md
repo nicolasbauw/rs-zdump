@@ -50,4 +50,4 @@ Tzinfo { timezone: "EST", utc_datetime: 2021-07-09T20:57:50.343062Z, datetime: 2
 -h and -V prints help and version information, respectively.
 
 
-License: GPL-3.0
+License: MIT
