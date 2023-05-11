@@ -1,25 +1,25 @@
 //! A Rust version of the zdump utility.
-//! 
-//! Output example when specifying only a zonename: 
+//!
+//! Output example when specifying only a zonename:
 //! ```text
 //! zdump /usr/share/zoneinfo/Europe/Paris
 //! Europe/Paris Tue, 04 Aug 2020 23:26:09 +0200 CEST
 //! ````
-//! 
-//! To display week number: 
+//!
+//! To display week number:
 //! ```text
 //! zdump /usr/share/zoneinfo/Europe/Paris -w
 //! Europe/Paris Tue, 04 Aug 2020 23:26:09 +0200 CEST, week number: 32
 //! ````
 //!
-//! When specifying a zonename and a year, outputs transition times for that year: 
+//! When specifying a zonename and a year, outputs transition times for that year:
 //! ```text
 //! zdump /usr/share/zoneinfo/Europe/Paris -y 2020
 //! Europe/Paris Sun, 29 Mar 2020 01:00:00 UT -> CEST, utc_offset=7200, DST: true
 //! Europe/Paris Sun, 25 Oct 2020 01:00:00 UT -> CET, utc_offset=3600, DST: false
 //! ```
-//! 
-//! To display all zone's transition times: 
+//!
+//! To display all zone's transition times:
 //! ```text
 //! zdump /usr/share/zoneinfo/America/Phoenix -a     
 //! America/Phoenix Sun, 18 Nov 1883 19:00:00 UT -> MST, utc_offset=-25200, DST: false
@@ -34,7 +34,7 @@
 //! America/Phoenix Sun, 30 Apr 1967 09:00:00 UT -> MDT, utc_offset=-21600, DST: true
 //! America/Phoenix Sun, 29 Oct 1967 08:00:00 UT -> MST, utc_offset=-25200, DST: false
 //! ```
-//! 
+//!
 //! To display raw and debug data:
 //! ```text
 //! zdump /usr/share/zoneinfo/EST -r
@@ -43,7 +43,7 @@
 //! ```
 //!
 //! -h and -V prints help and version information, respectively.
-//! 
+//!
 
 mod env;
 mod zdump;

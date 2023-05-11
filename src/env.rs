@@ -34,7 +34,8 @@ pub fn get_cargs() -> Option<Args> {
     let mut parsed_args: Vec<usize> = Vec::new();
     let mut comparator: Vec<usize> = Vec::new();
     // Zonename, -a, -y, year, -w, -r
-    let mut args: (&str, bool, bool, Option<i32>, bool, bool) = ("", false, false, None, false, false);
+    let mut args: (&str, bool, bool, Option<i32>, bool, bool) =
+        ("", false, false, None, false, false);
 
     for i in 1..a.len() {
         match a[i].as_ref() {
@@ -76,9 +77,9 @@ pub fn get_cargs() -> Option<Args> {
                 a[i].truncate(1);
             }
         }
-        if let "-" =  a[i].as_ref() {
+        if let "-" = a[i].as_ref() {
             parsed_args.push(i);
-        }    
+        }
     }
 
     parsed_args.sort();
