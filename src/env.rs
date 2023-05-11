@@ -90,7 +90,7 @@ pub fn get_cargs() -> Option<Args> {
         comparator.push(i);
     }
     for i in 0..parsed_args.len() {
-        if parsed_args[i] != comparator[i] && a[comparator[i]].parse::<u32>().is_err() == true {
+        if parsed_args[i] != comparator[i] && a[comparator[i]].parse::<u32>().is_err() {
             args.0 = &b[comparator[i]];
             break;
         }
@@ -108,7 +108,7 @@ pub fn get_cargs() -> Option<Args> {
     }
 
     Some(Args {
-        zonename: if args.0 == "" {
+        zonename: if args.0.is_empty() {
             None
         } else {
             Some((args.0).to_string())
