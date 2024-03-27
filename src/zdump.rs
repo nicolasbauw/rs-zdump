@@ -1,10 +1,12 @@
-use crate::env::get_cargs;
+use crate::args::get_cargs;
 use libtzfile::{Tz, TzError};
 use std::error::Error;
 
 pub fn zdump() -> Result<(), Box<dyn Error>> {
     // Getting cmdline args
-    let Some(opt) = get_cargs() else { return Ok(()) };
+    let Some(opt) = get_cargs() else {
+        return Ok(());
+    };
     let Some(z) = opt.zonename else { return Ok(()) };
 
     let tz = Tz::new(&z)?;

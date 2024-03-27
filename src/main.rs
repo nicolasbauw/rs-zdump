@@ -21,7 +21,7 @@
 //!
 //! To display all zone's transition times:
 //! ```text
-//! zdump /usr/share/zoneinfo/America/Phoenix -a     
+//! zdump /usr/share/zoneinfo/America/Phoenix -a
 //! America/Phoenix Sun, 18 Nov 1883 19:00:00 UT -> MST, utc_offset=-25200, DST: false
 //! America/Phoenix Sun, 31 Mar 1918 09:00:00 UT -> MDT, utc_offset=-21600, DST: true
 //! America/Phoenix Sun, 27 Oct 1918 08:00:00 UT -> MST, utc_offset=-25200, DST: false
@@ -45,7 +45,7 @@
 //! -h and -V prints help and version information, respectively.
 //!
 
-mod env;
+mod args;
 mod zdump;
 use std::process;
 
