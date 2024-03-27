@@ -1,5 +1,10 @@
 # Changelog
 
+### v1.3.5 (2024-03-27)
+
+- [Fixed] Crash when -y was not followed by anything
+- [Changed] updated to libtzfile v3.0.0
+
 ### v1.3.0 (2021-07-10)
 
 - [Fixed] Incorrect display of timezones without transition times
