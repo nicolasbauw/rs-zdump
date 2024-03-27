@@ -49,17 +49,19 @@ pub fn get_cargs() -> Option<Args> {
             }
             "-y" => {
                 args.2 = true;
-                match a[i + 1].parse::<i32>() {
-                    Ok(y) => {
-                        args.3 = Some(y);
-                    }
-                    Err(_) => {
-                        println!("Invalid year");
-                        return None;
-                    }
-                };
-                parsed_args.push(i + 1);
-                a[i].truncate(1);
+                if (i + 1) < a.len() {
+                    match a[i + 1].parse::<i32>() {
+                        Ok(y) => {
+                            args.3 = Some(y);
+                        }
+                        Err(_) => {
+                            println!("Invalid year");
+                            return None;
+                        }
+                    };
+                    parsed_args.push(i + 1);
+                    a[i].truncate(1);
+                }
             }
             "-r" | "--raw" => {
                 args.5 = true;
